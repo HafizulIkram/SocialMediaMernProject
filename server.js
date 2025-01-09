@@ -1,6 +1,10 @@
 const express = require('express');
 const mongoose = require('mongoose');
 
+const users = require('./routes/ServiceAPI/users');
+const profile = require('./routes/ServiceAPI/profile');
+const posts = require('./routes/ServiceAPI/posts');
+
 const app = express();
 
 // DB Config
@@ -14,7 +18,11 @@ mongoose
 
 app.get('/', (req, res) => res.send('Hello World!'));
 
+// Use Routes
 
+app.use('/api/users', users);
+app.use('/api/profile', profile);
+app.use('/api/post', posts);
 
 const port = process.env.PORT || 5000;
 
