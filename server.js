@@ -4,9 +4,9 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerSpec = require('./config/Swagger/swaggerConfig');
 const bodyParser = require('body-parser');
 
-const users = require('./routes/ServiceAPI/users');
-const profile = require('./routes/ServiceAPI/profile');
-const posts = require('./routes/ServiceAPI/posts');
+const users = require('./routes/api/users');
+const profile = require('./routes/api/profile');
+const posts = require('./routes/api/posts');
 
 const app = express();
 
