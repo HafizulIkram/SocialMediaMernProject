@@ -1,8 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const swaggerUi = require('swagger-ui-express');
-const swaggerSpec = require('./config/Swagger/swaggerConfig');
 const bodyParser = require('body-parser');
+const passport = require('passport');
 
 const users = require('./routes/api/users');
 const profile = require('./routes/api/profile');
@@ -23,17 +22,12 @@ mongoose
     .then(() => console.log('MongodDB Connected'))
     .catch(err => console.log(err));
 
-// Serve Swagger Docs only in development
-if (process.env.NODE_ENV === 'development') {
-    // Redirect root to API docs
-    app.get('/', (req, res) => {
-        res.redirect('/api-docs');
-    });
 
-    // Serve Swagger API docs
-    app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-    console.log('Swagger documentation is available at /api-docs');
-}
+// Passport middleware
+app.use(passport.initialize());
+
+// Passport Config
+require('./config/passport')(passport);
 
 // Use Routes
 app.use('/api/users', users);

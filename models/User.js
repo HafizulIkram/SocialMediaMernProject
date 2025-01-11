@@ -1,14 +1,8 @@
 const mongoose = require('mongoose');
-const { v4: uuidv4 } = require('uuid');
 const Schema = mongoose.Schema;
 
 // Create Scheme
 const UserSchema = new Schema({
-    id: {
-        type: String, 
-        default: uuidv4, 
-        unique: true 
-    },
     name: {
         type: String,
         required: true

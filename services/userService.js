@@ -36,7 +36,13 @@ exports.login = async ({ email, password }) => {
     }
 
     const payload = { id: user.id, name: user.name, avatar: user.avatar };
-    const token = jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 });
+    const token = jwt.sign(
+                    payload, 
+                    keys.secretOrKey, 
+                    { expiresIn: 3600 },);
 
     return { success: true, token: 'Bearer ' + token };
 };
+
+
+
